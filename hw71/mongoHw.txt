@@ -1,0 +1,35 @@
+use school
+
+function insertStudent(firstName, lastName, address, grade, collectionName) {
+    return db[collectionName].insert({
+        first: firstName,
+        last: lastName,
+        addr: address,
+        gra: grade
+    });
+}
+
+ 	insertStudent("donald", "Trump", "1600 pensylvania ave", "5th grade", "students")
+WriteResult({ "nInserted" : 1 })
+school 7> db.students.find()
+{ "_id" : ObjectId("58bf6e5922667c5b2f039f65"), "first" : "donald", "last" : "Trump", "addr" : "1600 pensylvania ave", "gra" : "5th grade" }
+school 8> insertStudent("donald", "lincoln", "29 cottage place", "11th grade", "students")
+WriteResult({ "nInserted" : 1 })
+school 9> insertStudent("ozzy", "goldstein", "319 cottage place", "9th grade", "students")
+WriteResult({ "nInserted" : 1 })
+school 10> insertStudent("yehoshua", "pietrokovski", "319 cottage place", "12th grade", "students")
+WriteResult({ "nInserted" : 1 })
+school 11> insertStudent("Avrohom", "kurtz", "16 sienna way", "12th grade", "students")
+WriteResult({ "nInserted" : 1 })
+
+db.students.find({first: "donald"})
+
+db.students.find({first: "donald", gra: "5th grade"})
+
+use store
+
+ db.products.insert([{name: "computer", price: 459.99},{name: "projector", price: 279.99}])
+
+db.products.find()
+
+db.products.remove({})
