@@ -1,0 +1,36 @@
+
+ 1)  db.students.update({_id:ObjectId("58bf6ec522667c5b2f039f66")},{"first": "mark","last":"levin","addr":"45 presidential","gra":"6th grade"})
+ 
+ 2)  db.students.update({gra:"6th grade"}, {$set:{gra: "7th grade"}}, {multi: true})
+ 
+ 3)  db.students.update({gra:5}, {$inc: {gra:1}}, {multi: true})
+ 
+ 4)  db.students.update({gra:"12th grade"}, {$set: {grades:[95,98,93]}}, {multi: true})
+ 
+ 5)  db.students.update({gra:"12th grade"},{$push: {grades: {$each:[85,86,87,88,89]}}}, {multi: true})
+ 
+ 6)  db.students.update({gra:"12th grade"},{$pop:{grades:1}}, {multi: true})
+ 
+ 7)  db.students.update({gra:"12th grade"},{$pull:{grades:85}}, {multi: true})
+ 
+ 8)  db.students.find({gra:{$gt:7},first:"yehoshua"}).pretty()
+ 
+ 9)  db.students.find({$or:[{gra:{$lt:7}},{"first":"Avrohom"}]}).pretty()
+ 
+ 10) db.students.find({gra:{$ne:5}}).pretty()
+ 
+ 11) db.students.find({gra:{$in:[6,7,8]}}).pretty()
+ 
+ 12) db.students.find({gra:{$nin:[6,7,8]}}).pretty()
+ 
+ 13) db.students.find({gra:{$not:{$gte:6}}}).pretty()
+ 
+ 14) db.students.find().sort({last:1})
+ 
+ 15) db.students.find().sort({last:1}).limit(3).pretty()
+ 
+ 16) db.students.find().sort({last:1}).limit(1).skip(3).pretty()
+ 
+ 17) db.students.update({first:"mark"},{$set:{parents:{father: "bill", mother: "hillary"}}})
+ 
+ 18) db.students.find({"parents.father":"bill"}).pretty()
